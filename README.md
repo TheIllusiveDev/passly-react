@@ -73,3 +73,5 @@ export default defineConfig([
   },
 ])
 ```
+
+[![License: EUPL 1.2](https://img.shields.io/badge/License-EUPL%201.2-blue.svg)](https://joinup.ec.europa.eu/collection/eupl/eupl-text-eupl-12)
