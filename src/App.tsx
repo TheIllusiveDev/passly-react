@@ -10,6 +10,15 @@ import "./App.css";
 function App() {
   const { user, setUser } = useAuthStore();
 
+  const fetchProfile = async (userId: string) => {
+    const { data } = await supabase
+      .from("profiles")
+      .select("*")
+      .eq("id", userId)
+      .single();
+    useAuthStore.getState().setProfile(data);
+  };
+
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null);
@@ -19,6 +28,8 @@ function App() {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
+      if (session?.user ?? null) fetchProfile(session.user.id);
+      else useAuthStore.getState().setProfile(null);
     });
 
     return () => subscription.unsubscribe();

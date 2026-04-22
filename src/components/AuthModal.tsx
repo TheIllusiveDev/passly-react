@@ -108,11 +108,18 @@ export const AuthModal = ({ isOpen, onClose }: AuthState) => {
             <div className="form-control">
               <label className="label cursor-pointer justify-start gap-3">
                 <input
+                  id="orgCheckbox"
                   type="checkbox"
                   className="checkbox checkbox-primary"
                   checked={isOrganization}
                   onChange={(e) => setIsOrganization(e.target.checked)}
                 />
+                <label
+                  htmlFor="orgCheckbox"
+                  className="special-nosel cursor-pointer"
+                >
+                  I am an organization
+                </label>
               </label>
             </div>
           )}
