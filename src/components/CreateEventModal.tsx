@@ -11,4 +11,16 @@ interface CreateEventModalProps {
 export const CreateEventModal = ({
   isOpen,
   onClose,
-}: CreateEventModalProps) => {};
+}: CreateEventModalProps) => {
+  const user = useAuthStore((state) => state.user);
+  const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    event_date: "",
+    location: "",
+    max_attendees: 100,
+  });
+
+  if (!isOpen) return null;
+};
